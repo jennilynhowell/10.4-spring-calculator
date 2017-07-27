@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h1>Welcome to Spring Calculator</h1>
+    <h3>This is a 'Reverse Polish Calculator'. Please enter your operands followed by your preferred operator.</h3>
+    <p>For example, '3 4 +' will return '7' and '12 3 -' will return '9.'</p>
+
+    <form action="/">
+        <input type="text" name="operand" placeholder="First operand"/>
+        <input type="text" name="operand2" placeholder="Second operand"/>
+        <select name="operator">
+            <option value="q">Operand</option>
+            <option value="+">+ (add)</option>
+            <option value="-">- (subtract)</option>
+            <option value="*">* (multiply)</option>
+            <option value="/">/ (divide)</option>
+        </select>
+        <input type="submit" value="Calculate!"/>
+    </form>
+
+    <h3>Result:</h3>
+    <h3 th:text="${calcResult}"></h3>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="javascript"></script>
+</body>
+</html>
