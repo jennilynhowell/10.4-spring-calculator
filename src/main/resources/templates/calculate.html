@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body class="container">
+    <h1>Welcome to Spring Calculator, <span th:text="${user.name}"></span></h1>
+    <h3>This is a 'Reverse Polish Calculator.' Please enter your operands followed by your preferred operator.</h3>
+    <p>For example, '3 4 +' will return '7' and '12 3 -' will return '9.'</p>
+
+
+    <form class="form-group form-inline" th:action="'/calculate/' + ${user.id}" method="post">
+        <input class="form-control" type="text" name="operand" placeholder="First operand"/>
+        <input class="form-control" type="text" name="operand2" placeholder="Second operand"/>
+        <select class="form-control" name="operator">
+            <option value="q">Operand</option>
+            <option value="+">+ (add)</option>
+            <option value="-">- (subtract)</option>
+            <option value="*">* (multiply)</option>
+            <option value="/">/ (divide)</option>
+        </select>
+        <input class="form-control btn btn-success" type="submit" value="Calculate!"/>
+    </form>
+
+    <p>Your equation was:</p>
+    <p th:text="${equation}"></p>
+
+    <h3>Result:</h3>
+    <h3 th:text="${calcResult}"></h3>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="javascript"></script>
+
+    <div class="container">
+        <h3>Recent Calculations</h3>
+        <ul class="list-unstyled" th:each="operation : ${user.operations}">
+            <li>First Operand: <span th:text="${operation.operand}"></span></li>
+            <li>Second Operand: <span th:text="${operation.operand2}"></span></li>
+            <li>Operator: <span th:text="${operation.operator}"></span></li>
+            <li>Result: <span th:text="${operation.result}"></span></li>
+        </ul>
+
+    </div>
+</body>
+</html>

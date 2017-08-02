@@ -11,9 +11,22 @@ public class Operation {
     private long id;
     private double operand;
     private double operand2;
+    private double result;
     private String operator;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private CalcUser user;
+
     public Operation() {}
+
+    public Operation(double operand, double operand2, double result, String operator, CalcUser user) {
+        this.operand = operand;
+        this.operand2 = operand2;
+        this.result = result;
+        this.operator = operator;
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -45,5 +58,13 @@ public class Operation {
 
     public void setOperator(String operator) {
         this.operator = operator;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void setResult(double result) {
+        this.result = result;
     }
 }
