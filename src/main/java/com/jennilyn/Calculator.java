@@ -18,22 +18,18 @@ public class Calculator {
 
             switch (token){
                 case "+":
-                    System.out.println("Now adding");
                     stack.push(stack.pop() + stack.pop());
                     break;
 
                 case "-":
-                    System.out.println("Now subtracting");
                     stack.push(-stack.pop() + stack.pop());
                     break;
 
                 case "*":
-                    System.out.println("Now multiplying");
                     stack.push(stack.pop() * stack.pop());
                     break;
 
                 case "/":
-                    System.out.println("Now dividing");
                     double divisor = stack.pop();
                     stack.push(stack.pop() / divisor);
                     break;

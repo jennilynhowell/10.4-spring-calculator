@@ -4,25 +4,34 @@
     <meta charset="UTF-8"/>
     <title>Spring Calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
 </head>
 <body class="container">
     <h1>Welcome to Spring Calculator</h1>
-    <h3>This is a 'Reverse Polish Calculator.' Please enter your operands followed by your preferred operator.</h3>
-    <p>For example, '3 4 +' will return '7' and '12 3 -' will return '9.'</p>
+    <h3>This is a 'Reverse Polish Calculator.' Please enter your name to get started!</h3>
 
     <form class="form-group form-inline" action="/submitName" method="post">
         <input class="form-control" type="text" name="user" placeholder="Your Name"/>
         <input class="form-control btn btn-success" type="submit" value="Let's Calculate!"/>
     </form>
 
-    <div class="container">
-        <h3>Recent Calculations</h3>
-        <ul class="list-unstyled" th:each="operation : ${operations}">
-            <li>First Operand: <span th:text="${operation.operand}"></span></li>
-            <li>Second Operand: <span th:text="${operation.operand2}"></span></li>
-            <li>Operator: <span th:text="${operation.operator}"></span></li>
-            <li>Result: <span th:text="${operation.result}"></span></li>
+    <div class="returning-users">
+        <h4>Or, link to your previous calculations!</h4>
+        <ul class="list-inline">
+            <li th:each="user: ${users}"><a th:href="'/calculate/' + ${user.id}" th:text="${user.name}"></a></li>
         </ul>
+    </div>
+
+    <div class="container">
+        <h3>Recent Calculations!</h3>
+        <div class="op-container">
+            <ul class="list-unstyled" th:each="operation : ${operations}">
+                <li>First Operand: <span th:text="${operation.operand}"></span></li>
+                <li>Second Operand: <span th:text="${operation.operand2}"></span></li>
+                <li>Operator: <span th:text="${operation.operator}"></span></li>
+                <li>Result: <span th:text="${operation.result}"></span></li>
+            </ul>
+        </div>
 
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="javascript"></script>

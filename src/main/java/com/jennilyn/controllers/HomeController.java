@@ -27,6 +27,8 @@ public class HomeController {
     @RequestMapping("/")
     public String index (Model model){
         Iterable<Operation> operations = opRepo.findAll();
+        Iterable<CalcUser> users = userRepo.findAll();
+        model.addAttribute("users", users);
         model.addAttribute("operations", operations);
         return "index";
     }
@@ -43,6 +45,7 @@ public class HomeController {
     public String calculate(@PathVariable("userId") long userId, Model model){
         CalcUser user = userRepo.findOne(userId);
         model.addAttribute("user", user);
+
         return "calculate";
     }
 
@@ -73,8 +76,8 @@ public class HomeController {
 
             model.addAttribute("equation", equation);
             model.addAttribute("calcResult", result);
-
-            return "redirect:/calculate/" + userId;
+            model.addAttribute("user", user);
+            return "calculate";
         }
 
 

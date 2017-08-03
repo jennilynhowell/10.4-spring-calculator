@@ -1,0 +1,43 @@
+.back-home a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.op-container {
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.list-unstyled {
+    flex: 0 1 25%;
+    margin: 10px;
+    padding: 10px;
+    background-color: #b3d8af;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.result {
+    background-color: #b3d8af;
+    padding-left: 3%;
+    padding-bottom: 1%;
+}
+
+.push-left, .push-right {
+    display: inline-block;
+}
+
+.push-right {
+    width: 85%;
+}
+
+.returning-users {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    text-align: center;
+}

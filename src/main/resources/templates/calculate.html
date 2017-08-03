@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Spring Calculator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}"/>
 </head>
 <body class="container">
     <h1>Welcome to Spring Calculator, <span th:text="${user.name}"></span></h1>
@@ -22,24 +23,30 @@
             <option value="/">/ (divide)</option>
         </select>
         <input class="form-control btn btn-success" type="submit" value="Calculate!"/>
+        <div class="form-control btn btn-success back-home"><a href="/">Return Home</a></div>
     </form>
 
-    <p>Your equation was:</p>
-    <p th:text="${equation}"></p>
+    <p class="push-left">Your equation was:</p>
+    <p class="push-right" th:text="${equation}"></p>
 
-    <h3>Result:</h3>
-    <h3 th:text="${calcResult}"></h3>
+    <div class="result">
+        <h3 class="push-left">Result:</h3>
+        <h3 class="push-right" th:text="${calcResult}"></h3>
+    </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="javascript"></script>
 
     <div class="container">
-        <h3>Recent Calculations</h3>
-        <ul class="list-unstyled" th:each="operation : ${user.operations}">
-            <li>First Operand: <span th:text="${operation.operand}"></span></li>
-            <li>Second Operand: <span th:text="${operation.operand2}"></span></li>
-            <li>Operator: <span th:text="${operation.operator}"></span></li>
-            <li>Result: <span th:text="${operation.result}"></span></li>
-        </ul>
+        <h3>Your Recent Calculations</h3>
+        <div class="op-container">
+            <ul class="list-unstyled" th:each="operation : ${user.operations}">
+                <li>First Operand: <span th:text="${operation.operand}"></span></li>
+                <li>Second Operand: <span th:text="${operation.operand2}"></span></li>
+                <li>Operator: <span th:text="${operation.operator}"></span></li>
+                <li>Result: <span th:text="${operation.result}"></span></li>
+            </ul>
+        </div>
+
 
     </div>
 </body>
